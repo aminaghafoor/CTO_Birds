@@ -23,44 +23,81 @@ $result = $stmt->get_result();
 <body>
 
   <header>
-    <div class="header">
-        <h1 class="heading center">Centrala Trust for Ornithology</h1>
-    <nav class="center">
-      <a href="memberA.php">My Profile</a>
-      <a href="newpostA.php">New Post</a>
-      <a href="viewpostA.php">View Post</a>
+    <nav class="navbar">
+       <h1 class="heading center">Centrala Trust for Ornithology</h1>
+   
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="memberA.php">My Profile</a></li>
+        <li><a href="viewpostA.php">View Posts</a></li>
+        <li><a href="newpostA.php">New Post</a></li>
+    </ul>
+</nav>
+  
+ <script>       
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
 
-      <form action="Logout.php" method="post">
-        <button class="exit" type="submit">Logout</button>
-      </form>
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+     
+
     </nav>
-  </header>
-
-  <h2>All Bird Sightings</h2>
-
-  <form method="get">
+<div class="center-logout">
+  <form method="get" class="search-button">
        <input type="text" name="search" placeholder="Search comments" />
        <button type="submit">Search</button>
   </form>
+</div>
 
+  </header>
+
+<section class="viewpost-section">
   <?php while ($row = $result->fetch_assoc()): ?>
-  <div style="border:1px solid #ccc; padding:10px; margin:10px;">
-    <h3><?= htmlspecialchars($row['bird']) ?> spotted in <?= htmlspecialchars($row['location']) ?></h3>
-    <p><strong>By:</strong> <?= htmlspecialchars($row['username']) ?> | <?= $row['date'] ?> <?= $row['time'] ?></p>
-    <p><strong>Activity:</strong> <?= htmlspecialchars($row['activity']) ?> | Duration: <?= $row['duration'] ?> mins</p>
-    <p><?= htmlspecialchars($row['comments']) ?></p>
+  
+  <div class="post-card">
+    <h3 class="post-heading">
+      <?= htmlspecialchars($row['bird']) ?> spotted in <?= htmlspecialchars($row['location']) ?>
+    </h3>
 
-    <?php if ($row['image']): ?>
-      <img src="<?= htmlspecialchars($row['image']) ?>" alt="Bird Image" width="200" />
-    <?php endif; ?>
+    <p>
+      <strong>By:</strong> <?= htmlspecialchars($row['username']) ?> | 
+      <?= $row['date'] ?> <?= $row['time'] ?>
+    </p>
 
+    <p>
+      <strong>Activity:</strong> <?= htmlspecialchars($row['activity']) ?> | 
+      Duration: <?= $row['duration'] ?> mins
+    </p>
+
+    <p class="comment">
+      <?= htmlspecialchars($row['comments']) ?>
+    </p>
+    
+    <div class="post-image">
+      <?php if ($row['image']): ?>
+        <img src="<?= htmlspecialchars($row['image']) ?>" alt="Bird Image" class="responsive-img" />
+      <?php endif; ?>
+    </div>
   </div>
- <?php endwhile; ?>
+
+  <?php endwhile; ?>
+</section>
+
+ <div class="logout-container">
+      <form action="Logout.php" method="post">
+        <button class="exit" type="submit">Logout</button>
+      </form>
+</div>
 
   <div class="bottom-footer">
     <p> © 2025 Centrala Trust for Ornithology. <br>
        All Rights Reserved.  <br>
        Developed By Amna</p>
     </div>
+    
 </body>
 </html>

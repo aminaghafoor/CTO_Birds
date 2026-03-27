@@ -24,24 +24,24 @@ $result = $stmt->get_result();
 <body>
 
   <header>
-    <h1>Admin Panel</h1>
-    <h2>Centrala Trust for Ornithology</h2>
-    <nav>
+   <nav class="navbar">
+       <h1 class="heading center">Admin Panel</h1>
       <form action="logout.php" method="post" style="text-align: left;">
         <button type="submit">Logout</button>
       </form>
     </nav>
   </header>
   
-  <h1>User Posts</h1>
+ 
+     <div class="center-logout">
+  <form method="get" class="search-button">
+       <input type="text" name="search" placeholder="Search comments" />
+       <button type="submit">Search</button>
+  </form>
 
-  <h2>All Bird Sightings</h2>
-
- <form method="get">
-     <input type="text" name="search" placeholder="Search comments" />
-     <button type="submit">Search</button>
- </form>
-
+</div>
+ 
+<section class="viewpost-section">
  <?php while ($row = $result->fetch_assoc()): ?>
  <div style="border:1px solid #ccc; padding:10px; margin:10px;" id="post-<?= $row['id'] ?>">
    <h3><?= htmlspecialchars($row['bird']) ?> spotted in <?= htmlspecialchars($row['location']) ?></h3>
@@ -49,19 +49,29 @@ $result = $stmt->get_result();
    <p><strong>Activity:</strong> <?= htmlspecialchars($row['activity']) ?> | Duration: <?= $row['duration'] ?> mins</p>
    <p><strong>Comments:</strong> <span class="comment"><?= htmlspecialchars($row['comments']) ?></span></p>
 
+<div class="post-image">
    <?php if ($row['image']): ?>
     <img src="<?= htmlspecialchars($row['image']) ?>" alt="Bird Image" width="200" />
    <?php endif; ?>
+</div>
 
    <br>
+
+   <div class="post-actions">
    <button class="new-button" onclick="editPost(<?= $row['id'] ?>)">Edit</button>
    <button class="new-button" onclick="deletePost(<?= $row['id'] ?>)">Delete</button>
  </div>
+</div>
+
  <?php endwhile; ?>
 
 
  <script src="delete.js"></script>
+
+</section>
+
 </body>
+
 <div class="bottom-footer">
     <p> © 2025 Centrala Trust for Ornithology. <br>
        All Rights Reserved.  <br>

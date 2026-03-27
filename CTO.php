@@ -12,17 +12,27 @@
     <title>CTO</title>
 </head>
 <body>
-    
-   <div class="header">
-       
-        <nav class="center">
-             <a href="index.php">Home</a>
-             <a href="ViewPosts.php">View Posts</a>
-             <a href="RegisterA.php">Register</a>
-             <a href="LoginN.php">Login</a>
-             <a href="CTO.php">Learn More</a>
-        </nav>
-    </div>
+   <nav class="navbar">
+       <h1 class="heading center">Centrala Trust for Ornithology</h1>
+   
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ViewPosts.php">view posts</a></li>
+        <li><a href="RegisterA.php">Register</a></li>
+        <li><a href="LoginN.php">Login</a></li>
+         <li><a href="CTO.php">Learn More</a></li>
+    </ul>
+</nav>
+
+<script>       
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
 
     <h1>CTO Process Hub</h1>
     <p> Here are the beginner's guidelines about the CTO.
@@ -97,6 +107,7 @@
     </section>
     
   <footer>
+
 
     <div class="bottom-footer">
     <p> © 2025 Centrala Trust for Ornithology. <br>

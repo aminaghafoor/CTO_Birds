@@ -12,9 +12,6 @@
     <p>Join us in tracking bird activity across the city to support a greener, healthier future.</p>
     
 
-    <footer class="star">
-    <p>2025 Centrala Trust for Ornithology.  <br>
-     All Rights Reserved.</p>
-    </footer>
+    <footer class="star"><p>2025 Centrala Trust for Ornithology. <br>All Rights Reserved.</p></footer>
 
 </html>

@@ -9,22 +9,35 @@
 <body class="page">
 
  <header>
-  <div class="header">
-        <h1 class="heading center">Centrala Trust for Ornithology</h1>
-    <nav class="center">
-      <a href="memberA.php">My Profile</a>
-      <a href="newpostA.php">New Post</a>
-      <a href="viewpostA.php">View Post</a>
+  <nav class="navbar">
+       <h1 class="heading center">Centrala Trust for Ornithology</h1>
+   
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="memberA.php">My Profile</a></li>
+        <li><a href="viewpostA.php">View Posts</a></li>
+        <li><a href="newpostA.php">New Post</a></li>
+    </ul>
+</nav>
+  
+ <script>       
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
 
-      <form action="Logout.php" method="post">
-        <button class="exit" type="submit">Logout</button>
-      </form>
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+     
     </nav>
   </header>
 
-  <h2>Submit a Bird Observation</h2>
+ 
 
   <form class="form-container" action="submitpostA.php" method="post" enctype="multipart/form-data">
+    
+ <h2>Submit a Bird Observation</h2>
 
     <label>Location:
       <select name="location" required>
@@ -70,6 +83,12 @@
     <button type="submit">Submit Post</button>
 
   </form>
+  
+ <div class="logout-container">
+      <form action="Logout.php" method="post">
+        <button class="exit" type="submit">Logout</button>
+      </form>
+</div>
 
 <div class="bottom-footer">
     <p> © 2025 Centrala Trust for Ornithology. <br>

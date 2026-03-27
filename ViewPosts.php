@@ -24,13 +24,14 @@ $result = $stmt->get_result();
 
     <nav class="navbar">
        <h1 class="heading center">Centrala Trust for Ornithology</h1>
-    <div class="logo">CTO</div>
+   
     <div class="hamburger" id="hamburger">&#9776;</div>
     <ul class="nav-links" id="nav-links">
-        <li><a href="index.php">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="ViewPosts.php">view posts</a></li>
         <li><a href="RegisterA.php">Register</a></li>
         <li><a href="LoginN.php">Login</a></li>
+         <li><a href="CTO.php">Learn More</a></li>
     </ul>
 </nav>
 
@@ -43,29 +44,44 @@ $result = $stmt->get_result();
     });
 </script>
  
-  <form method="get">
+ <div class="center-logout">
+  <form method="get" class="search-button">
        <input type="text" name="search" placeholder="Search comments" />
        <button type="submit">Search</button>
   </form>
+</div>
 
 <section class="viewpost-section">
   <?php while ($row = $result->fetch_assoc()): ?>
-  <div style="border:1px solid #ccc; padding:10px; margin:10px;">
-    <h3><?= htmlspecialchars($row['bird']) ?> spotted in <?= htmlspecialchars($row['location']) ?></h3>
-    <p><strong>By:</strong> <?= htmlspecialchars($row['username']) ?> | <?= $row['date'] ?> <?= $row['time'] ?></p>
-    <p><strong>Activity:</strong> <?= htmlspecialchars($row['activity']) ?> | Duration: <?= $row['duration'] ?> mins</p>
-    <p><?= htmlspecialchars($row['comments']) ?></p>
+  
+  <div class="post-card">
+    <h3 class="post-heading">
+      <?= htmlspecialchars($row['bird']) ?> spotted in <?= htmlspecialchars($row['location']) ?>
+    </h3>
+
+    <p>
+      <strong>By:</strong> <?= htmlspecialchars($row['username']) ?> | 
+      <?= $row['date'] ?> <?= $row['time'] ?>
+    </p>
+
+    <p>
+      <strong>Activity:</strong> <?= htmlspecialchars($row['activity']) ?> | 
+      Duration: <?= $row['duration'] ?> mins
+    </p>
+
+    <p class="comment">
+      <?= htmlspecialchars($row['comments']) ?>
+    </p>
     
-  <div class="post-image">
-    <?php if ($row['image']): ?>
-      <img src="<?= htmlspecialchars($row['image']) ?>" alt="Bird Image" width="200" />
-    <?php endif; ?>
+    <div class="post-image">
+      <?php if ($row['image']): ?>
+        <img src="<?= htmlspecialchars($row['image']) ?>" alt="Bird Image" class="responsive-img" />
+      <?php endif; ?>
+    </div>
   </div>
 
-  </div>
- <?php endwhile; ?>
-
-    </section>
+  <?php endwhile; ?>
+</section>
 
   <div class="bottom-footer">
     <p> © 2025 Centrala Trust for Ornithology. <br>
